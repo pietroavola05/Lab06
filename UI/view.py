@@ -35,7 +35,21 @@ class View:
         self.controller = controller
 
     def update(self):
+        print(" [DEBUG] Sto facendo update")
         self.page.update()
+
+
+    def mostra_auto_clicked(self, e):
+        #Una volta cliccato il pulsante mostra auto viene scatenata questa funzione che gestisce l'evento e
+        #Questo evento deve rimandarmi al controller dopo creo e stampo una lista di automobili
+        print("[DEBUG] mostra_automobili() chiamata")
+        self.controller.mostra_automobili()
+
+    def cerca_modello_clicked(self, e):
+        #Una volta cliccato il pulsante mostra auto per modello viene scatenata questa funzione che gestisce l'evento e
+        #Questo evento deve rimandarmi al controller dopo creo e stampo una lista di automobili ricercata per modello inserito dall'utente
+        print("[DEBUG] è stato premuto il pulsante della ricerca per modello")
+        self.controller.cerca_automobili_per_modello(self.input_modello_auto.value)  #devo passare il valore dell'input perchè è un textfield
 
     def load_interface(self):
         """ Crea e aggiunge Elementi di UI alla pagina e la aggiorna. """
@@ -63,7 +77,12 @@ class View:
         pulsante_conferma_responsabile = ft.ElevatedButton("Conferma", on_click=self.controller.conferma_responsabile)
 
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
-        # TODO
+        #questo pulsante richiama una funzione prensente nel controller
+        """pulsante_mostra_auto = ft.ElevatedButton("Automobili", on_click=self.controller.mostra_automobili(self.lista_auto))
+        pulsante_cerca_per_modello= ft.ElevatedButton("Cerca", on_click=self.controller.cerca_automobili_per_modello(self.lista_auto_ricerca, self.input_modello_auto))"""
+
+        pulsante_mostra_auto = ft.ElevatedButton("Mostra Automobili", on_click=self.mostra_auto_clicked)
+        pulsante_cerca_per_modello = ft.ElevatedButton("Cerca", on_click=self.cerca_modello_clicked)
 
         # --- LAYOUT ---
         self.page.add(
@@ -82,10 +101,19 @@ class View:
             ft.Divider(),
 
             # Sezione 3
-            # TODO
+            ft.Text(value="Automobili", size=20),
+            ft.Row(spacing=200,
+                   controls=[pulsante_mostra_auto],
+                   alignment=ft.MainAxisAlignment.CENTER),
+            self.lista_auto,
+            ft.Divider(),
 
             # Sezione 4
-            # TODO
+            ft.Text(value="Cerca Automobile", size=20),
+            ft.Row(spacing=200,
+                   controls=[self.input_modello_auto, pulsante_cerca_per_modello],
+                   alignment=ft.MainAxisAlignment.CENTER),
+            self.lista_auto_ricerca,
         )
 
     def cambia_tema(self, e):
