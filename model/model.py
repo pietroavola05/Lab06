@@ -50,7 +50,7 @@ class Autonoleggio:
 
         if cnx is not None:
             cursor = cnx.cursor(dictionary=True)   #prendo i dati considerando i vari campi all'interno di una riga come per un dizionario
-            query = "SELECT * FROM automobili"
+            query = ("SELECT * FROM automobili") #questa query seleziona tutte le auto del db
             cursor.execute(query)
             for row in cursor:
                 lista_automobili.append(Automobile(codice=row["codice"],

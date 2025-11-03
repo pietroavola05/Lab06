@@ -46,8 +46,10 @@ class View:
         self.controller.mostra_automobili()
 
     def cerca_modello_clicked(self, e):
-        #Una volta cliccato il pulsante mostra auto per modello viene scatenata questa funzione che gestisce l'evento e
-        #Questo evento deve rimandarmi al controller dopo creo e stampo una lista di automobili ricercata per modello inserito dall'utente
+        #Una volta cliccato il pulsante mostra auto per modello
+        #viene scatenata questa funzione che gestisce l'evento e
+        #Questo evento deve rimandarmi al controller
+        # dopo creo e stampo una lista di automobili ricercata per modello inserito dall'utente
         print("[DEBUG] è stato premuto il pulsante della ricerca per modello")
         self.controller.cerca_automobili_per_modello(self.input_modello_auto.value)  #devo passare il valore dell'input perchè è un textfield
 

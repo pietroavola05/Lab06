@@ -41,7 +41,7 @@ class Controller:
             self._view.show_alert("Errore nel recupero delle automobili.")
         else:
             for auto in lista_automobili:
-                print("[DEBUG]: Sono dentro il for per stampare le automobili")
+                print("[DEBUG]: sono dentro il for per stampare le automobili")
                 self._view.lista_auto.controls.append(ft.Text(str(auto))) #Aggiungo le auto dentro la list view
             self._view.update() #aggiorno la pagina
         #NOTA: convertire l'oggetto Auto in una stringa.
